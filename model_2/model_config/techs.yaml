@@ -1,0 +1,78 @@
+##
+# TECHNOLOGY DEFINITIONS
+##
+
+techs:
+    demand_power:
+        essentials:
+            name: 'Power demand'
+            color: '#072486'
+            parent: demand
+            carrier: power
+
+    demand_magic_beans:
+        essentials:
+            name: 'Magic beans demand'
+            color: '#072486'
+            parent: demand
+            carrier: magic_beans
+
+    wind_farm:
+        essentials:
+            name: 'Wind farm'
+            color: '#9e2a2b'
+            parent: supply
+            carrier_out: power
+        constraints:
+            resource: file=wind_resource.csv
+            resource_scale: 10000.0 #10MW wind farm capacity
+            energy_eff: 1.0
+            energy_cap_max: 0.0  # kW
+            lifetime: 25
+        costs:
+            monetary:
+                energy_cap: 0.0 # £/kWh
+                om_con: 0.0
+                interest_rate: 0.10
+
+    ccgt:
+        essentials:
+            name: 'Combined cycle gas turbine'
+            color: '#E37A72'
+            parent: supply
+            carrier_out: power
+        constraints:
+            resource: inf
+            energy_eff: 0.5
+            lifetime: 25
+        costs:
+            monetary:
+                interest_rate: 0.10
+                energy_cap: 750  # USD per kW
+                om_con: 0.02  # USD per kWh
+
+    magic_bean_maker:
+        essentials:
+            name: 'Magic bean maker'
+            color: '#3B61E3'
+            parent: conversion
+            carrier_in: power
+            carrier_out: magic_beans
+        constraints:
+            energy_eff: 1.0
+            lifetime: 25
+        costs:
+            monetary:
+                interest_rate: 0.10
+                energy_cap: 0  # USD per kW
+                om_con: 50
+
+    magic_bean_grid:
+        essentials:
+            name: 'Magic bean maker'
+            color: '#3B61E3'
+            parent: supply
+            carrier_out: magic_beans
+        costs:
+            monetary:
+                om_con: 100

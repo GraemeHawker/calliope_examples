@@ -1,0 +1,26 @@
+##
+# LOCATIONS
+##
+
+locations:
+    region1:
+        coordinates: {lat: 40, lon: -2}
+        techs:
+            demand_power:
+                constraints:
+                    resource: -1000 # continuous 1MW demand
+            demand_magic_beans:
+                constraints:
+                    resource: -1000
+            ccgt:
+                constraints:
+                    energy_cap_equals: 1000 # CCGT can meet all power demand
+            wind_farm:
+                constraints:
+                    energy_cap_equals: 2000 # wind farm can produce up to 2MW at no cost
+            magic_bean_maker:
+                constraints:
+                    energy_cap_equals: 1000 # can make magic beans with any local energy
+            magic_bean_grid:
+                constraints:
+                    energy_cap_equals: 1000 # can supply all magic bean demand
