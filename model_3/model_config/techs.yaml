@@ -1,0 +1,76 @@
+##
+# TECHNOLOGY DEFINITIONS
+##
+
+techs:
+    demand_power:
+        essentials:
+            name: 'Power demand'
+            color: '#072486'
+            parent: demand
+            carrier: power
+        constraints:
+            resource: file=regional_demand.csv
+
+    wind_power:
+        essentials:
+            name: 'Wind farm'
+            color: '#9e2a2b'
+            parent: supply
+            carrier_out: power
+        constraints:
+            resource: file=regional_wind.csv
+            energy_eff: 1.0
+            lifetime: 25
+        costs:
+            monetary:
+                energy_cap: 2370000 # £/MW
+                om_con: 0.0
+                interest_rate: 0.10
+
+    ccgt:
+        essentials:
+            name: 'Combined cycle gas turbine'
+            color: '#E37A72'
+            parent: supply
+            carrier_out: power
+        constraints:
+            resource: inf
+            energy_eff: 0.5
+            lifetime: 25
+        costs:
+            monetary:
+                interest_rate: 0.10
+                energy_cap: 700000  # £/MW
+                om_con: 30  # £/MWh
+
+    ac_transmission:
+        essentials:
+            name: 'AC power transmission'
+            color: '#8465A9'
+            parent: transmission
+            carrier: power
+        constraints:
+            energy_eff: 0.95
+            lifetime: 25
+        costs:
+            monetary:
+                interest_rate: 0.10
+                energy_cap: 200
+                
+    battery:
+        essentials:
+            name: 'Battery storage'
+            color: '#3B61E3'
+            parent: storage
+            carrier: power
+        constraints:
+            energy_cap_per_storage_cap_max: 4
+            energy_eff: 0.95  # 0.95 * 0.95 = 0.9025 round trip efficiency
+            storage_loss: 0  # No loss over time assumed
+            lifetime: 25
+        costs:
+            monetary:
+                interest_rate: 0.10
+                storage_cap: 200000  # £ per MWh storage capacity
+        

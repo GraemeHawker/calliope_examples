@@ -1,0 +1,37 @@
+##
+# LOCATIONS
+##
+
+locations:
+    region1:
+        coordinates: {lat: 50, lon: -2}
+        techs:
+            demand_power:
+                constraints:
+                    resource_scale: 4000 # up to 4GW demand
+            wind_power:
+                constraints:
+                    resource_scale: 40000
+                    energy_cap_equals: 40000 # wind farm can produce up to 40GW
+            battery:
+                constraints:
+                    energy_cap_equals: 10000 # 10 GW battery
+            
+    region2:
+        coordinates: {lat: 40, lon: -2}
+        techs:
+            demand_power:
+                constraints:
+                    resource_scale: 50000 # up to 50 GW demand
+                    
+            ccgt:
+                constraints:
+                    energy_cap_equals: 60000 # CCGT can meet all power demand
+            
+links:
+    region1,region2:
+        techs:
+            ac_transmission:
+                constraints:
+                    energy_cap_max: 16000 # 16GW transmission link
+    
