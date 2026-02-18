@@ -4,69 +4,83 @@
 
 techs:
     demand_power:
-        essentials:
-            name: 'Power demand'
-            color: '#072486'
-            parent: demand
-            carrier: power
-
-    demand_magic_beans:
-        essentials:
-            name: 'Magic beans demand'
-            color: '#072486'
-            parent: demand
-            carrier: magic_beans
-
-    wind_farm:
-        essentials:
-            name: 'Wind farm'
-            color: '#9e2a2b'
-            parent: supply
-            carrier_out: power
-        constraints:
-            resource: file=wind_resource.csv
-            resource_scale: 10000.0 #10MW wind farm capacity
-            energy_eff: 1.0
-            energy_cap_max: 0.0  # kW
-            lifetime: 25
-        costs:
-            monetary:
-                energy_cap: 0.0 # £/kWh
-                om_con: 0.0
-                interest_rate: 0.10
+        name: 'Power demand'
+        color: '#072486'
+        base_tech: demand
+        carrier_in: power
 
     ccgt:
-        essentials:
-            name: 'Combined cycle gas turbine'
-            color: '#E37A72'
-            parent: supply
-            carrier_out: power
-        constraints:
-            resource: inf
-            energy_eff: 0.5
-            lifetime: 25
-        costs:
-            monetary:
-                interest_rate: 0.10
-                energy_cap: 750  # USD per kW
-                om_con: 0.02  # USD per kWh
+        name: 'Combined cycle gas turbine'
+        color: '#E37A72'
+        base_tech: supply
+        carrier_out: power
+        source_use_max: inf
+        flow_out_eff: 0.5
+        lifetime: 25
+        cost_interest_rate:
+            data: 0.10
+            index: monetary
+            dims: costs
+        cost_flow_cap:
+            data: 750
+            index: monetary
+            dims: costs
+        cost_flow_in:
+            data: 0.10
+            index: monetary
+            dims: costs
 
-    magic_bean_maker:
-        essentials:
-            name: 'Magic bean maker'
-            color: '#3B61E3'
-            parent: conversion
-            carrier_in: power
-            carrier_out: magic_beans
-            export_carrier: magic_beans
-        constraints:
-            energy_eff: 1.0
-            lifetime: 25
-        costs:
-            monetary:
-                interest_rate: 0.10
-                energy_cap: 0  # USD per kW
-                om_con: 0
-                export: -1000
+    wind_farm:
+        name: 'Wind farm'
+        color: '#9e2a2b'
+        base_tech: supply
+        carrier_out: power
+        #source_use_max: .inf
+        source_unit: per_cap
+        #source_cap_equals_flow_cap: True
+        #flow_out_eff: 1.0
+        lifetime: 25
+        cost_interest_rate:
+            data: 0.10
+            index: monetary
+            dims: costs
+        cost_flow_cap:
+            data: 0.0
+            index: monetary
+            dims: costs
 
+            
+            
+
+
+#    demand_magic_beans:
+#        name: 'Magic beans demand'
+#        color: '#072486'
+#        base_tech: demand
+#        carrier_in: magic_beans
+#
+
+
+
+    
+        
+
+#    magic_bean_maker:
+#        essentials:
+#            name: 'Magic bean maker'
+#            color: '#3B61E3'
+#            parent: conversion
+#            carrier_in: power
+#            carrier_out: magic_beans
+#            export_carrier: magic_beans
+#        constraints:
+#            energy_eff: 1.0
+#            lifetime: 25
+#        costs:
+#            monetary:
+#                interest_rate: 0.10
+#                energy_cap: 0  # USD per kW
+#                om_con: 0
+#                export: -1000
+#
 

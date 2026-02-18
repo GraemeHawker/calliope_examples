@@ -1,0 +1,25 @@
+##
+# NODES
+##
+
+nodes:
+    region1:
+        latitude: 40 
+        longitude: -2
+        techs:
+            demand_power:
+                sink_use_equals: 1000
+
+            #    flow_cap_min: 1000 # continuous 1MW demand
+            #    flow_cap_max: 1000 
+            #demand_magic_beans:
+            #    constraints:
+            #        resource: -1000
+            ccgt:
+                flow_cap_min: 1000 # 1MW CCGT (i.e. can meet all demand)
+                flow_cap_max: 1000 
+            wind_farm:
+                flow_cap_min: 1000 # 1MW wind farm
+                flow_cap_max: 1000 
+            #magic_bean_maker:
+            #    energy_cap_equals: 1000 # can make magic beans with any local energy

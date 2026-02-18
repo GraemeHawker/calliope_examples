@@ -1,0 +1,30 @@
+##
+# NODES
+##
+
+nodes:
+    region1:
+        latitude: 50.0 
+        longitude: 0.0
+        techs:
+            demand_power:
+                sink_use_equals: 4000
+            wind_farm:
+                flow_cap_min: 10000 # 10GW wind farm
+                flow_cap_max: 10000 
+            battery:
+                flow_cap_min: 1000
+                flow_cap_max: 1000
+                storage_cap_min: 1000
+                storage_cap_max: 1000
+
+    region2:
+        latitude: 40.0
+        longitude: 0.0
+        techs: 
+            demand_power:
+                sink_use_equals: 10000
+            ccgt:
+                flow_cap_min: 14000 # 14GW CCGT (i.e. can meet all demand)
+                flow_cap_max: 14000 
+

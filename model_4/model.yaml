@@ -1,13 +1,13 @@
 import:  # Import other files from paths relative to this file, or absolute paths
-    - 'model_config/techs.yaml'  # This file specifies the model's technologies
-    - 'model_config/nodes.yaml'  # This file specifies the model's locations
+    - 'techs.yaml'  # This file specifies the model's technologies
+    - 'nodes.yaml'  # This file specifies the model's locations
 
 config:
     init:
-        name: 'example model 1'
+        name: 'example model 4'
         calliope_version: 0.7.0
         subset:
-            timesteps: ['2020-01-01', '2020-01-31']
+            timesteps: ['2023-01-01', '2023-01-31']
         broadcast_input_data: True
         mode: base
     build:
@@ -18,7 +18,7 @@ config:
 
 data_tables:
     wind_resource:
-        data: data_tables/wind_resource.csv
+        data: data_tables/regional_wind.csv
         rows: timesteps
         columns: nodes
         add_dims:

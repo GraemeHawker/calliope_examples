@@ -1,0 +1,91 @@
+##
+# TECHNOLOGY DEFINITIONS
+##
+
+techs:
+    demand_power:
+        name: 'Power demand'
+        color: '#072486'
+        base_tech: demand
+        carrier_in: power
+
+    ccgt:
+        name: 'Combined cycle gas turbine'
+        color: '#E37A72'
+        base_tech: supply
+        carrier_out: power
+        source_use_max: inf # no constraint on amount of gas it can burn
+        flow_out_eff: 0.5 # 50% conversion efficiency of gas to power
+        lifetime: 25 # lifetime in years for cost calculations
+        flow_cap_max: 0.0 # no capacity can be built other than that specified in nodes
+        cost_interest_rate:
+            data: 0.10 # 10% interest rate applied to capital investment cost
+            index: monetary
+            dims: costs
+        cost_flow_cap:
+            data: 0.0 # cost to build per MW of capacity
+            index: monetary
+            dims: costs
+        cost_flow_in:
+            data: 0.01 # cost to operate (i.e. cost of gas per MWh)
+            index: monetary
+            dims: costs
+
+    wind_farm:
+        name: 'Wind farm'
+        color: '#9e2a2b'
+        base_tech: supply
+        carrier_out: power
+        source_unit: per_cap
+        lifetime: 25
+        flow_cap_max: 0.0 # no capacity can be built other than that specified in nodes
+        cost_interest_rate:
+            data: 0.10 # 10% interest rate applied to capital investment cost
+            index: monetary
+            dims: costs
+        cost_flow_cap:
+            data: 0.0 # cost to build per MW capacity
+            index: monetary
+            dims: costs
+
+    region1_to_region2:
+        link_from: region1
+        link_to: region2
+        name: 'AC power transmission'
+        color: '#8465A9'
+        base_tech: transmission
+        carrier_in: power
+        carrier_out: power
+        flow_out_eff: 1.0 # no transmission losses
+        lifetime: 25
+        flow_cap_max: 10000 # 10GW link between regions, in either direction
+
+    battery:
+        name: "Battery Storage"
+        color: "#3B61E3"
+        base_tech: storage
+        carrier_in: power
+        carrier_out: power
+        #flow_cap_max: 0.0 # by default no battery capacity unless we specify it in nodes
+        #storage_cap_max: 0.0 # by default no battery capacity unless we specify it in nodes
+        #flow_cap_per_storage_cap: 1 # 1 hour battery (ie. can completely charge/discharge in 1 hour)
+        flow_out_eff: 1.0
+        flow_in_eff: 1.0
+        storage_loss: 0 # no loss over time
+        lifetime: 25
+        cost_interest_rate:
+            data: 0.10 # 10% interest rate applied to capital investment cost
+            index: monetary
+            dims: costs
+        cost_flow_cap:
+            data: 0.0 # cost to build per MW import/export capacity
+            index: monetary
+            dims: costs
+        cost_storage_cap:
+            data: 0.0 # cost to build per MWh storage capacity
+            index: monetary
+            dims: costs
+
+            
+
+
