@@ -7,7 +7,7 @@ config:
         name: 'example model 4'
         calliope_version: 0.7.0
         subset:
-            timesteps: ['2023-01-01', '2023-01-31']
+            timesteps: ['2023-01-01', '2023-12-31']
         broadcast_input_data: True
         mode: base
     build:
@@ -24,6 +24,13 @@ data_tables:
         add_dims:
             techs: wind_farm
             parameters: source_use_max
+#    power_demand:
+#        data: data_tables/regional_demand.csv
+#        rows: timesteps
+#        columns: nodes
+#        add_dims:
+#            techs: demand_power
+#            parameters: sink_use_equals
             
 #data_definitions:
 #    objective_cost_weights:
