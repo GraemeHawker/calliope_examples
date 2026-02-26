@@ -8,7 +8,7 @@ techs:
         color: '#072486'
         base_tech: demand
         carrier_in: power
-        #sink_unit: per_cap
+        sink_unit: per_cap
 
     ccgt:
         name: 'Combined cycle gas turbine'

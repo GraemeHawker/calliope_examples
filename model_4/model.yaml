@@ -24,13 +24,13 @@ data_tables:
         add_dims:
             techs: wind_farm
             parameters: source_use_max
-#    power_demand:
-#        data: data_tables/regional_demand.csv
-#        rows: timesteps
-#        columns: nodes
-#        add_dims:
-#            techs: demand_power
-#            parameters: sink_use_equals
+    power_demand:
+        data: data_tables/regional_demand.csv
+        rows: timesteps
+        columns: nodes
+        add_dims:
+            techs: demand_power
+            parameters: sink_use_equals
             
 #data_definitions:
 #    objective_cost_weights:
