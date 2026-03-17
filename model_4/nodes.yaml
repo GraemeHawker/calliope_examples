@@ -4,13 +4,13 @@
 
 nodes:
     region1:
-        latitude: 50.0 
-        longitude: 0.0
+        latitude: 56.29 
+        longitude: -4.01
         techs:
             demand_power:
                 #sink_use_equals: 4000
-                flow_cap_min: 4000
-                flow_cap_max: 4000
+                flow_cap_min: 4895
+                flow_cap_max: 4895
             wind_farm:
                 flow_cap_min: 10000 # 10GW wind farm
                 flow_cap_max: 10000 
@@ -21,8 +21,8 @@ nodes:
                 storage_cap_max: 1000
 
     region2:
-        latitude: 40.0
-        longitude: 0.0
+        latitude: 52.79 
+        longitude: -1.32
         techs: 
             demand_power:
                 #sink_use_equals: 10000

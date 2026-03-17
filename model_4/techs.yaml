@@ -20,11 +20,11 @@ techs:
         lifetime: 25 # lifetime in years for cost calculations
         flow_cap_max: 0.0 # no capacity can be built other than that specified in nodes
         cost_interest_rate:
-            data: 0.10 # 10% interest rate applied to capital investment cost
+            data: 0.05 # 10% interest rate applied to capital investment cost
             index: monetary
             dims: costs
         cost_flow_cap:
-            data: 0.0 # cost to build per MW of capacity
+            data: 600000.0 # cost to build per MW of capacity
             index: monetary
             dims: costs
         cost_flow_in:
